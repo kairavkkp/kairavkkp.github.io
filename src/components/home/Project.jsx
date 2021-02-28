@@ -5,39 +5,21 @@ import {
   projectHeading,
   gitHubLink,
   gitHubUsername,
-  gitHubQuerry,
-  projectsLength,
+
 } from "../../editable-stuff/configurations.json";
-import { couldStartTrivia, textSpanContainsPosition } from "typescript";
-import { data } from "jquery";
-const ghPinnedRepos = require('gh-pinned-repos')
 
 
-const Project = () => {
-  const [projectsArray, setProjectsArray] = useState([]);
-  let projArr = []
-  let requests = []
-  // const handleRequest = useCallback((e) => {
 
-  //   axios
-  //     .get(gitHubLink + gitHubUsername + gitHubQuerry)
-  //     .then((response) => {
-  //       // handle success
-  //       console.log(response.data.slice(0, 6));
-  //       return setProjectsArray(response.data.slice(0, projectsLength));
-  //     })
-  //     .catch((error) => {
-  //       // handle error
-  //       return console.error(error.message);
-  //     })
-  //     .finally(() => {
-  //       // always executed
-  //     });
-  // }, []);
+export default class Project extends React.Component {
+  state = {
+    projectsArray: []
+  };
+  shouldComponentUpdate() {
+    return false;
+  }
 
-  const handleRequest = useCallback((e) => {
-    let projArr = []
-    axios({
+  async getPinnedRepo() {
+    const result = await axios({
       url: 'https://api.github.com/graphql',
       headers: { Authorization: `Bearer aab77861e3497f1cd79113fb3fced6329b2c95f8` },
       method: 'post',
@@ -60,35 +42,44 @@ const Project = () => {
       }
       `
       }
-    }).then(async (result) => {
-      for (let i = 0; i < result.data.data.user.pinnedItems.edges.length; i++) {
-        const element = result.data.data.user.pinnedItems.edges[i];
-        const owner = element.node.nameWithOwner.split('/')[0]
-        const repoName = element.node.nameWithOwner.split('/')[1]
-        const data = await axios.get(`${gitHubLink}${owner}/${repoName}`)
-        projArr.push(data.data)
-      }
-      return setProjectsArray(projArr)
-    });
-  })
-  useEffect(() => {
-    handleRequest();
-  }, [handleRequest]);
+    })
+    return result;
+  };
 
-  return (
-    <div id="projects" className="jumbotron jumbotron-fluid bg-transparent m-0">
-      {projectsArray.length && (
+  async getRepoDetail(gitHubLink, owner, repoName) {
+    const data = await axios.get(`${gitHubLink}${owner}/${repoName}`)
+    return data
+  };
+
+  async preparePinnedRepos() {
+    let projArr = [];
+    const result = await this.getPinnedRepo();
+    console.log(result)
+    for (let i = 0; i < result.data.data.user.pinnedItems.edges.length; i++) {
+      console.log(`From here ${i}`)
+      const element = result.data.data.user.pinnedItems.edges[i];
+      const owner = element.node.nameWithOwner.split('/')[0]
+      const repoName = element.node.nameWithOwner.split('/')[1]
+      const data = await this.getRepoDetail(gitHubLink, owner, repoName)
+      projArr.push(data.data)
+    }
+    console.log(projArr);
+    this.state.projectsArray = projArr;
+  }
+  render() {
+
+    this.preparePinnedRepos()
+    return <div id="projects" className="jumbotron jumbotron-fluid bg-transparent m-0">
+      {this.state.projectsArray.length && (
         <div className="container container-fluid p-5">
           <h1 className="display-4 pb-5">{projectHeading}</h1>
           <div className="row">
-            {projectsArray.map((project) => (
+            {this.state.projectsArray.map((project) => (
               <ProjectCard key={project.id} id={project.id} value={project} />
             ))}
           </div>
         </div>
       )}
     </div>
-  );
-};
-
-export default Project;
+  }
+}
