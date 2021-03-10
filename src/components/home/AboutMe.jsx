@@ -15,11 +15,11 @@ const AboutMe = () => {
   const [showInsta, setShowInsta] = useState(showInstaProfilePic);
   const [resumeURL] = useState(Pdf);
 
-  useEffect(() => {
-    if (showInsta) {
-      handleRequest();
-    }
-  }, [showInsta]);
+  // useEffect(() => {
+  //   if (showInsta) {
+  //     handleRequest();
+  //   }
+  // }, [showInsta]);
 
   const handleRequest = (e) => {
     axios

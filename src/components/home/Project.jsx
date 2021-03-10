@@ -8,14 +8,12 @@ import {
 
 } from "../../editable-stuff/configurations.json";
 
-
-
 export default class Project extends React.Component {
   state = {
     projectsArray: []
   };
-  shouldComponentUpdate() {
-    return false;
+  componentDidMount() {
+    this.preparePinnedRepos();
   }
 
   async getPinnedRepo() {
@@ -54,21 +52,16 @@ export default class Project extends React.Component {
   async preparePinnedRepos() {
     let projArr = [];
     const result = await this.getPinnedRepo();
-    console.log(result)
     for (let i = 0; i < result.data.data.user.pinnedItems.edges.length; i++) {
-      console.log(`From here ${i}`)
       const element = result.data.data.user.pinnedItems.edges[i];
       const owner = element.node.nameWithOwner.split('/')[0]
       const repoName = element.node.nameWithOwner.split('/')[1]
       const data = await this.getRepoDetail(gitHubLink, owner, repoName)
       projArr.push(data.data)
     }
-    console.log(projArr);
-    this.state.projectsArray = projArr;
+    this.setState({ projectsArray: projArr });
   }
   render() {
-
-    this.preparePinnedRepos()
     return <div id="projects" className="jumbotron jumbotron-fluid bg-transparent m-0">
       {this.state.projectsArray.length && (
         <div className="container container-fluid p-5">
