@@ -22,11 +22,17 @@ const AboutMe = () => {
   }, [showInsta]);
 
   const handleRequest = (e) => {
-    axios
-      .get(instaLink + instaUsername + instaQuerry)
+    axios({
+      method: "get",
+      url: instaLink + instaUsername + instaQuerry,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    })
       .then((response) => {
         // handle success
-        // console.log(response.data.graphql);
+        console.log(response.data.graphql);
+        console.log("Img URL: ", response.data.graphql.user.profile_pic_url_hd)
         return setInstaProfilePic(
           response.data.graphql.user.profile_pic_url_hd
         );
