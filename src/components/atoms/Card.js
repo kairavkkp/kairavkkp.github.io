@@ -1,6 +1,11 @@
-import React from "react"
+import React, { useState, useRef } from "react";
+import ProjectModal from "./ProjectModal";
+import ReactModal from "react-modal";
 
-const Card = ({ heading, paragraph, imgUrl, projectLink }) => {
+const Card = ({ heading, paragraph, imgUrl }) => {
+  const [show, setShow] = useState(false);
+  const previewRef = useRef(null);
+
   return (
     <div
       className="card"
@@ -14,17 +19,35 @@ const Card = ({ heading, paragraph, imgUrl, projectLink }) => {
       <div className="content">
         <h1 className="header">{heading}</h1>
         <p className="text">{paragraph}</p>
-        <a
-          href={projectLink ? projectLink : "#"}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn"
-        >
+        <button className="btn" onClick={() => setShow(true)}>
           Explore
-        </a>
+        </button>
+        <ReactModal isOpen={show}>
+          <div className="modal" onClick={() => setShow(false)}>
+            <div
+              className="modal-content"
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
+              <div className="modal-header">
+                <h4>{heading}</h4>
+              </div>
+              <div className="modal-body">{paragraph}</div>
+              <div className="modal-footer">
+                <button
+                  className="modal-close-button"
+                  onClick={() => setShow(false)}
+                >
+                  Back
+                </button>
+              </div>
+            </div>
+          </div>
+        </ReactModal>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;
