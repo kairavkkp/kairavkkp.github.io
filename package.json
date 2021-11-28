@@ -1,52 +1,50 @@
 {
-  "name": "developers-portfolio",
-  "description": "A personal static website/portfolio template hosted with GitHub Pages, built to showcase my recent projects.",
-  "homepage": "http://kairavkkp.github.io",
-  "version": "0.1.0",
+  "name": "react-portfolio-template",
   "private": true,
-  "author": {
-    "name": "Kairav Pithadia",
-    "email": "kairavpithadia13@gmail.com",
-    "url": "https://github.com/kairavkkp"
-  },
+  "description": "Portfolio Template For Awesome Peoples",
+  "version": "0.1.0",
+  "author": "Chetan Verma <hello@chetanverma.com>",
   "dependencies": {
-    "@popperjs/core": "^2.1.1",
-    "axios": "^0.19.2",
-    "bootstrap": "^4.4.1",
-    "gh-pages": "^2.2.0",
-    "gh-pinned-repos": "^1.0.1",
-    "jquery": "^3.5.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-photo-gallery": "^8.0.0",
-    "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.1",
-    "react-typist": "^2.0.5",
-    "typescript": "^3.8.3"
+  "gatsby": "^4.2.0",
+  "gatsby-plugin-gatsby-cloud": "^4.2.0",
+  "gatsby-plugin-image": "^2.2.0",
+  "gatsby-plugin-manifest": "^4.2.0",
+  "gatsby-plugin-sass": "5.2.0",
+  "gatsby-plugin-smoothscroll": "1.2.0",
+  "gatsby-plugin-offline": "^5.2.0",
+  "gatsby-plugin-react-helmet": "^5.2.0",
+  "gatsby-plugin-sharp": "^4.2.0",
+  "gatsby-source-filesystem": "^4.2.0",
+  "gatsby-transformer-sharp": "^4.2.0",
+  "prop-types": "^15.7.2",
+  "react": "^17.0.1",
+  "react-dom": "^17.0.1",
+  "react-helmet": "^6.1.0",
+  "react-reveal": "^1.2.2",
+  "react-scroll": "^1.8.1",
+  "sass": "1.43.5"
   },
+  "devDependencies": {
+  "prettier": "2.1.2"
+  },
+  "keywords": [
+  "gatsby"
+  ],
+  "license": "0BSD",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "custom-deploy": "node pages.js"
+  "build": "gatsby build",
+  "develop": "gatsby develop",
+  "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+  "start": "npm run develop",
+  "serve": "gatsby serve",
+  "clean": "gatsby clean",
+  "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/gatsbyjs/gatsby-starter-default"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "bugs": {
+  "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
-}
+  }
