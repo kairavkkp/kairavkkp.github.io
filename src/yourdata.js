@@ -1,35 +1,24 @@
-// Skills Icons
-import htmlIcon from "./images/html.svg"
-import cssIcon from "./images/css.svg"
-import reactIcon from "./images/react.svg"
-import jsIcon from "./images/javascript.svg"
-import designIcon from "./images/design.svg"
-import codeIcon from "./images/code.svg"
-
+import codeIcon from "./images/code.svg";
+import codepenIcon from "./images/codepen.svg";
+import cssIcon from "./images/css.svg";
+import designIcon from "./images/design.svg";
+import dribbbleIcon from "./images/dribbble.svg";
 // Social Icon
-import githubIcon from "./images/github.svg"
-import codepenIcon from "./images/codepen.svg"
-import dribbbleIcon from "./images/dribbble.svg"
-import instagramIcon from "./images/instagram.svg"
+import githubIcon from "./images/github.svg";
+// Skills Icons
+import htmlIcon from "./images/html.svg";
+import instagramIcon from "./images/instagram.svg";
+import jsIcon from "./images/javascript.svg";
+import reactIcon from "./images/react.svg";
+import techStack from "./constants";
 
-// Tech-Stack Metadata
-import PYTHON from "./constants"
-import DJANGO from "./constants"
-import DRF from "./constants"
-import CELERY from "./constants"
-import TWISTED from "./constants"
-import STRIPE from "./constants"
-import RABBITMQ from "./constants"
-
-export default {
+const myData = {
   //(Please Do Not Remove The comma(,) after every variable)
   //Change The Website Template
 
   //   Header Details ---------------------
   name: "Kairav",
-  headerTagline: [
-    "Building robust", "backend solutions"
-  ],
+  headerTagline: ["Building robust", "backend solutions"],
   //   Header Paragraph
   headerParagraph:
     "Backend Developer | Jr. Data Science Engineer @ Cilans Systems Pvt. Ltd.",
@@ -43,40 +32,50 @@ export default {
   projects: [
     {
       title: "Nuvola",
-      para:
-        "Django based Backend for Briggo Barrista Bot.",
+      para: "Django based Backend for Briggo Barrista Bot.",
       //Project Image - Add Your Project Image Here
       imageSrc:
         "https://images.unsplash.com/photo-1487837647815-bbc1f30cd0d2?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8Njl8fHBhc3RlbHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=400&q=60",
       projectMetadata: {
         tenure: {
           start: "November, 2020",
-          end: "July, 2021"
+          end: "July, 2021",
         },
         stack: [
-          DJANGO, DRF, PYTHON, CELERY, TWISTED, STRIPE, RABBITMQ
+          techStack.DJANGO,
+          techStack.DRF,
+          techStack.PYTHON,
+          techStack.CELERY,
+          techStack.TWISTED,
+          techStack.STRIPE,
+          techStack.RABBITMQ,
         ],
         location: "Remote/Client Project",
-        decription: ""
+        decription: "",
       },
     },
     {
       title: "Nuvola",
-      para:
-        "Django based Backend for Briggo Barrista Bot.",
+      para: "Django based Backend for Briggo Barrista Bot.",
       //Project Image - Add Your Project Image Here
       imageSrc:
         "https://images.unsplash.com/photo-1487837647815-bbc1f30cd0d2?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8Njl8fHBhc3RlbHxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=400&q=60",
       projectMetadata: {
         tenure: {
           start: "November, 2020",
-          end: "July, 2021"
+          end: "July, 2021",
         },
         stack: [
-          DJANGO, DRF, PYTHON, CELERY, TWISTED, STRIPE, RABBITMQ
+          techStack.DJANGO,
+          techStack.DRF,
+          techStack.PYTHON,
+          techStack.CELERY,
+          techStack.TWISTED,
+          techStack.STRIPE,
+          techStack.RABBITMQ,
         ],
         location: "Remote/Client Project",
-        decription: ""
+        decription: "",
       },
     },
   ],
@@ -162,6 +161,7 @@ export default {
   ],
 
   // End Contact Section ---------------
-}
+};
 
+export default myData;
 // Thanks for using this template, I would love to hear from you contact me at hello@chetanverma.com

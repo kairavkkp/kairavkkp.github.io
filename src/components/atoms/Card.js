@@ -1,10 +1,9 @@
-import React, { useState, useRef } from "react";
-import ProjectModal from "./ProjectModal";
+import React, { useState } from "react";
+
 import ReactModal from "react-modal";
 
 const Card = ({ heading, paragraph, imgUrl }) => {
   const [show, setShow] = useState(false);
-  const previewRef = useRef(null);
 
   return (
     <div
