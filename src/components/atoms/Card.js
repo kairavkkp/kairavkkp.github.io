@@ -21,8 +21,10 @@ const Card = ({ heading, paragraph, imgUrl }) => {
         <button className="btn" onClick={() => setShow(true)}>
           Explore
         </button>
-        <ReactModal isOpen={show}>
-          <div className="modal" onClick={() => setShow(false)}>
+        <ReactModal isOpen={show}
+        className="modal"
+        overlayClassName="overlay">
+          <div onClick={() => setShow(false)}>
             <div
               className="modal-content"
               onClick={(e) => {
@@ -30,9 +32,16 @@ const Card = ({ heading, paragraph, imgUrl }) => {
               }}
             >
               <div className="modal-header">
-                <h4>{heading}</h4>
+                <h1>{heading}</h1>
+              </div>
+
+              <div className="modal-main">
+              <div className="sidebar">
+                <button className="sidebar-button">About</button>
+                <button className="sidebar-button">About</button>
               </div>
               <div className="modal-body">{paragraph}</div>
+              </div>
               <div className="modal-footer">
                 <button
                   className="modal-close-button"
