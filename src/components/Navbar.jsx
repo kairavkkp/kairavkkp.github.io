@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Pdf from "../editable-stuff/resume.pdf";
+import Pdf from "../editable-stuff/Kairav_Resume_Oct_5_2022.pdf";
 import { showBlog, FirstName } from "../editable-stuff/configurations.json";
 
 const Navbar = (props) => {
