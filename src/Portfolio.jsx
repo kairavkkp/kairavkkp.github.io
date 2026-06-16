@@ -6,7 +6,7 @@ import { Github, Linkedin, Mail, ArrowUpRight, Menu, X } from "lucide-react";
 // ─────────────────────────────────────────────────────────────
 const PROFILE = {
   name: "Kairav Pithadia",
-  role: "Backend Engineer",
+  role: "Backend & DevOps Engineer",
   blurb:
     "6+ years building scalable async systems on AWS. Specialized in document processing pipelines, event-driven architectures, and AI-powered automation.",
   location: "Ahmedabad, Gujarat, India",
