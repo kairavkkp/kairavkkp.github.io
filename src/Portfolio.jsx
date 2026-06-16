@@ -1,5 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Github, Linkedin, Mail, ArrowUpRight, Menu, X } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  ArrowUpRight,
+  Menu,
+  X,
+  Download,
+} from "lucide-react";
 
 // ─────────────────────────────────────────────────────────────
 // EDIT YOUR CONTENT HERE
@@ -13,6 +21,7 @@ const PROFILE = {
   email: "kairavpithadia13@gmail.com",
   github: "https://github.com/kairavkkp",
   linkedin: "https://linkedin.com/in/kairav-pithadia",
+  resume: "/Kairav_Resume_2026.pdf",
   available: true,
 };
 
@@ -245,6 +254,13 @@ export default function Portfolio() {
               <button className="btn btn-ghost" onClick={() => go("contact")}>
                 Get in touch
               </button>
+              <a
+                className="btn btn-ghost"
+                href={PROFILE.resume}
+                download="Kairav_Pithadia_Resume.pdf"
+              >
+                Resume <Download size={16} />
+              </a>
             </div>
           </Reveal>
 
@@ -363,7 +379,7 @@ export default function Portfolio() {
           <span className="mono">
             © {new Date().getFullYear()} {PROFILE.name}
           </span>
-          <span className="mono footer-built">built with React</span>
+          {/* <span className="mono footer-built">built with React</span> */}
         </footer>
       </main>
     </div>
