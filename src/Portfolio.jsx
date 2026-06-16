@@ -5,71 +5,85 @@ import { Github, Linkedin, Mail, ArrowUpRight, Menu, X } from "lucide-react";
 // EDIT YOUR CONTENT HERE
 // ─────────────────────────────────────────────────────────────
 const PROFILE = {
-  name: "Alex Rivera",
-  role: "Full-Stack Engineer",
+  name: "Kairav Pithadia",
+  role: "Backend Engineer",
   blurb:
-    "I build reliable web software with a bias for clean interfaces and boring, dependable infrastructure underneath.",
-  location: "San Francisco, CA",
-  email: "hello@alexrivera.dev",
-  github: "https://github.com",
-  linkedin: "https://linkedin.com",
+    "6+ years building scalable async systems on AWS. Specialized in document processing pipelines, event-driven architectures, and AI-powered automation.",
+  location: "Ahmedabad, Gujarat, India",
+  email: "kairavpithadia13@gmail.com",
+  github: "https://github.com/kairavkkp",
+  linkedin: "https://linkedin.com/in/kairav-pithadia",
   available: true,
 };
 
 const STACK = [
-  "TypeScript", "React", "Node.js", "Python",
-  "PostgreSQL", "Go", "AWS", "Docker",
+  "Python",
+  "Go",
+  "JavaScript",
+  "React",
+  "AWS",
+  "PostgreSQL",
+  "MongoDB",
+  "Redis",
+  "Kafka",
+  "Terraform",
 ];
 
 const PROJECTS = [
   {
-    file: "ledger-api/",
-    title: "Ledger API",
-    desc: "A double-entry accounting service handling 2M+ transactions/day with strong consistency guarantees and an audit-first data model.",
-    tags: ["Go", "PostgreSQL", "gRPC"],
+    file: "merge-pdf/",
+    title: "Merge-PDF",
+    desc: "CLI tool in Python using PyMuPDF for merging PDFs, EPUBs, and images with customisations. 21K+ downloads on PyPI.",
+    tags: ["Python", "PyMuPDF", "CLI", "OSS"],
+    href: "https://github.com/kairavkkp/merge-pdf",
+  },
+  {
+    file: "doc-engine/",
+    title: "Async Document Engine",
+    desc: "Asynchronous invoice processing engine using AWS Step Functions and SQS, processing 500k+ invoices within the first few months at Lighthouz AI.",
+    tags: ["AWS Step Functions", "SQS", "Python"],
     href: "#",
   },
   {
-    file: "atlas-ui/",
-    title: "Atlas Design System",
-    desc: "A component library and tokens pipeline adopted across six product teams, cutting net-new UI build time roughly in half.",
-    tags: ["React", "TypeScript", "Storybook"],
+    file: "classify-extract/",
+    title: "Classify-Extract-Audit",
+    desc: "End-to-end pipeline using AWS Textract and GPT-4o/4.1 to automate data extraction and logic-based auditing for unstructured carrier documents.",
+    tags: ["AWS Textract", "GPT-4o", "Python"],
     href: "#",
   },
   {
-    file: "drift.py",
-    title: "Drift",
-    desc: "An open-source schema migration linter that catches unsafe production changes before they ship. ~1.4k stars.",
-    tags: ["Python", "CLI", "OSS"],
-    href: "#",
-  },
-  {
-    file: "pulse-dash/",
-    title: "Pulse",
-    desc: "A real-time observability dashboard streaming metrics over WebSockets with sub-second render budgets.",
-    tags: ["React", "WebSockets", "D3"],
+    file: "invoice-pipeline/",
+    title: "Invoice Pipeline",
+    desc: "Scalable processing pipelines that reduced invoice handling time from days to minutes — a 99.83% improvement — at Savor Operations.",
+    tags: ["Django", "AWS Lambda", "Terraform"],
     href: "#",
   },
 ];
 
 const EXPERIENCE = [
   {
-    range: "2023 — now",
+    range: "Dec 2024 — Feb 2026",
+    role: "Sr. Full Stack Engineer",
+    org: "Lighthouz AI Inc.",
+    note: "Architected an async document engine processing 500k+ invoices. Built a Classify-Extract-Audit pipeline with Textract and GPT-4o/4.1. Reduced delivery-to-payment cycle by 24+ hours for brokers and enabled same-day payment for factoring firms.",
+  },
+  {
+    range: "Oct 2022 — Aug 2024",
+    role: "Lead Backend Engineer",
+    org: "Savor Operations",
+    note: "Reduced invoice processing time by 99.83%. Managed cloud infrastructure across multiple AWS accounts with Terraform. Automated CI/CD pipelines via GitHub Actions and built AI integrations using OpenAI models.",
+  },
+  {
+    range: "Oct 2020 — Sept 2022",
     role: "Senior Software Engineer",
-    org: "Northwind Systems",
-    note: "Lead engineer on the payments platform. Designed the ledger service and mentored four engineers.",
+    org: "Cilans Systems Pvt. Ltd.",
+    note: "Led migration from monolith to microservices for Costa Coffee's Storefront using NestJS, TypeScript, KafkaJS, and GraphQL. Delivered scalable backend solutions across multiple client projects.",
   },
   {
-    range: "2020 — 2023",
-    role: "Software Engineer",
-    org: "Bright Harbor",
-    note: "Built customer-facing dashboards and the internal design system from the ground up.",
-  },
-  {
-    range: "2018 — 2020",
-    role: "Junior Developer",
-    org: "Cedar Labs",
-    note: "Shipped features across the stack on a small, fast-moving product team.",
+    range: "Jan 2020 — Jul 2020",
+    role: "Deep Learning Research Intern",
+    org: "CSE, IIT Bombay",
+    note: "Document text parsing using OCR and deep learning for E-KYC. Built image-based classifiers for detecting document types.",
   },
 ];
 
@@ -86,13 +100,23 @@ function Reveal({ children, className = "", as: Tag = "div", delay = 0 }) {
   const ref = useRef(null);
   const [shown, setShown] = useState(false);
   useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) { setShown(true); return; }
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (reduce) {
+      setShown(true);
+      return;
+    }
     const el = ref.current;
     if (!el) return;
     const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setShown(true); io.disconnect(); } },
-      { threshold: 0.15 }
+      ([e]) => {
+        if (e.isIntersecting) {
+          setShown(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.15 },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -120,7 +144,7 @@ export default function Portfolio() {
           if (e.isIntersecting) setActive(e.target.id);
         });
       },
-      { rootMargin: "-45% 0px -50% 0px" }
+      { rootMargin: "-45% 0px -50% 0px" },
     );
     ids.forEach((id) => {
       const el = document.getElementById(id);
@@ -172,7 +196,11 @@ export default function Portfolio() {
         {menuOpen && (
           <div className="nav-mobile">
             {SECTIONS.map((s) => (
-              <button key={s.id} className="nav-mobile-link" onClick={() => go(s.id)}>
+              <button
+                key={s.id}
+                className="nav-mobile-link"
+                onClick={() => go(s.id)}
+              >
                 {s.label}
               </button>
             ))}
@@ -186,16 +214,16 @@ export default function Portfolio() {
           <Reveal>
             <p className="mono eyebrow">
               {PROFILE.available && <span className="dot" />}
-              {PROFILE.available ? "available for work" : "currently heads-down"}
+              {PROFILE.available
+                ? "available for work"
+                : "currently heads-down"}
               <span className="sep">·</span>
               {PROFILE.location}
             </p>
           </Reveal>
 
           <Reveal delay={60}>
-            <h1 className="hero-title">
-              {PROFILE.name}
-            </h1>
+            <h1 className="hero-title">{PROFILE.name}</h1>
           </Reveal>
 
           <Reveal delay={120}>
@@ -208,7 +236,10 @@ export default function Portfolio() {
 
           <Reveal delay={240}>
             <div className="hero-actions">
-              <button className="btn btn-primary" onClick={() => go("projects")}>
+              <button
+                className="btn btn-primary"
+                onClick={() => go("projects")}
+              >
                 View work <ArrowUpRight size={16} />
               </button>
               <button className="btn btn-ghost" onClick={() => go("contact")}>
@@ -222,7 +253,9 @@ export default function Portfolio() {
               <span className="mono stack-label">// stack</span>
               <ul className="stack-list">
                 {STACK.map((t) => (
-                  <li key={t} className="mono stack-item">{t}</li>
+                  <li key={t} className="mono stack-item">
+                    {t}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -248,7 +281,9 @@ export default function Portfolio() {
                   <p className="card-desc">{p.desc}</p>
                   <ul className="tags">
                     {p.tags.map((t) => (
-                      <li key={t} className="mono tag">{t}</li>
+                      <li key={t} className="mono tag">
+                        {t}
+                      </li>
                     ))}
                   </ul>
                 </a>
@@ -288,8 +323,8 @@ export default function Portfolio() {
 
           <Reveal>
             <p className="contact-lead">
-              Have something you're building, or a role you think I'd be good for?
-              The fastest way to reach me is email.
+              Have something you're building, or a role you think I'd be good
+              for? The fastest way to reach me is email.
             </p>
           </Reveal>
 
@@ -300,12 +335,22 @@ export default function Portfolio() {
                 <span>{PROFILE.email}</span>
                 <ArrowUpRight size={16} className="row-arrow" />
               </a>
-              <a className="contact-row" href={PROFILE.github} target="_blank" rel="noreferrer">
+              <a
+                className="contact-row"
+                href={PROFILE.github}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Github size={18} />
                 <span>GitHub</span>
                 <ArrowUpRight size={16} className="row-arrow" />
               </a>
-              <a className="contact-row" href={PROFILE.linkedin} target="_blank" rel="noreferrer">
+              <a
+                className="contact-row"
+                href={PROFILE.linkedin}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Linkedin size={18} />
                 <span>LinkedIn</span>
                 <ArrowUpRight size={16} className="row-arrow" />
@@ -315,7 +360,9 @@ export default function Portfolio() {
         </section>
 
         <footer className="footer">
-          <span className="mono">© {new Date().getFullYear()} {PROFILE.name}</span>
+          <span className="mono">
+            © {new Date().getFullYear()} {PROFILE.name}
+          </span>
           <span className="mono footer-built">built with React</span>
         </footer>
       </main>
