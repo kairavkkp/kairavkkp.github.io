@@ -51,21 +51,18 @@ const PROJECTS = [
     title: "Async Document Engine",
     desc: "Asynchronous invoice processing engine using AWS Step Functions and SQS, processing 500k+ invoices within the first few months at Lighthouz AI.",
     tags: ["AWS Step Functions", "SQS", "Python"],
-    href: "#",
   },
   {
     file: "classify-extract/",
     title: "Classify-Extract-Audit",
     desc: "End-to-end pipeline using AWS Textract and GPT-4o/4.1 to automate data extraction and logic-based auditing for unstructured carrier documents.",
     tags: ["AWS Textract", "GPT-4o", "Python"],
-    href: "#",
   },
   {
     file: "invoice-pipeline/",
     title: "Invoice Pipeline",
     desc: "Scalable processing pipelines that reduced invoice handling time from days to minutes — a 99.83% improvement — at Savor Operations.",
     tags: ["Django", "AWS Lambda", "Terraform"],
-    href: "#",
   },
 ];
 
@@ -286,25 +283,33 @@ export default function Portfolio() {
           </Reveal>
 
           <div className="grid">
-            {PROJECTS.map((p, i) => (
-              <Reveal key={p.title} delay={i * 60}>
-                <a className="card" href={p.href}>
-                  <div className="card-top">
-                    <span className="mono card-file">{p.file}</span>
-                    <ArrowUpRight size={18} className="card-arrow" />
-                  </div>
-                  <h3 className="card-title">{p.title}</h3>
-                  <p className="card-desc">{p.desc}</p>
-                  <ul className="tags">
-                    {p.tags.map((t) => (
-                      <li key={t} className="mono tag">
-                        {t}
-                      </li>
-                    ))}
-                  </ul>
-                </a>
-              </Reveal>
-            ))}
+            {PROJECTS.map((p, i) => {
+              const Tag = p.href ? "a" : "div";
+              const linkProps = p.href
+                ? { href: p.href, target: "_blank", rel: "noreferrer" }
+                : {};
+              return (
+                <Reveal key={p.title} delay={i * 60}>
+                  <Tag className="card" {...linkProps}>
+                    <div className="card-top">
+                      <span className="mono card-file">{p.file}</span>
+                      {p.href && (
+                        <ArrowUpRight size={18} className="card-arrow" />
+                      )}
+                    </div>
+                    <h3 className="card-title">{p.title}</h3>
+                    <p className="card-desc">{p.desc}</p>
+                    <ul className="tags">
+                      {p.tags.map((t) => (
+                        <li key={t} className="mono tag">
+                          {t}
+                        </li>
+                      ))}
+                    </ul>
+                  </Tag>
+                </Reveal>
+              );
+            })}
           </div>
         </section>
 
@@ -507,11 +512,11 @@ const CSS = `
   border-radius: 14px; padding: 24px; text-decoration: none; color: inherit;
   transition: transform .2s cubic-bezier(.22,.61,.36,1), border-color .2s, box-shadow .2s;
 }
-.card:hover { transform: translateY(-3px); border-color: #D8D8D1; box-shadow: 0 12px 30px -18px rgba(0,0,0,.25); }
+a.card:hover { transform: translateY(-3px); border-color: #D8D8D1; box-shadow: 0 12px 30px -18px rgba(0,0,0,.25); }
 .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
 .card-file { font-size: 12.5px; color: var(--accent); }
 .card-arrow { color: var(--faint); transition: transform .2s, color .2s; }
-.card:hover .card-arrow { transform: translate(2px,-2px); color: var(--ink); }
+a.card:hover .card-arrow { transform: translate(2px,-2px); color: var(--ink); }
 .card-title { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600; letter-spacing: -.015em; margin: 0 0 8px; }
 .card-desc { font-size: 14.5px; color: var(--muted); line-height: 1.6; margin: 0 0 18px; flex: 1; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0; }
