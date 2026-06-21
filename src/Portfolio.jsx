@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import {
   Github,
   Linkedin,
+  Twitter,
   Mail,
   ArrowUpRight,
   Menu,
@@ -21,6 +22,7 @@ const PROFILE = {
   email: "kairavpithadia13@gmail.com",
   github: "https://github.com/kairavkkp",
   linkedin: "https://linkedin.com/in/kairav-pithadia",
+  twitter: "https://x.com/Kairavk",
   resume: "/Kairav_Resume_2026.pdf",
   available: true,
 };
@@ -374,6 +376,16 @@ export default function Portfolio() {
               >
                 <Linkedin size={18} />
                 <span>LinkedIn</span>
+                <ArrowUpRight size={16} className="row-arrow" />
+              </a>
+              <a
+                className="contact-row"
+                href={PROFILE.twitter}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Twitter size={18} />
+                <span>X / Twitter</span>
                 <ArrowUpRight size={16} className="row-arrow" />
               </a>
             </div>
