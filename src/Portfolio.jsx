@@ -23,7 +23,7 @@ const PROFILE = {
   github: "https://github.com/kairavkkp",
   linkedin: "https://linkedin.com/in/kairav-pithadia",
   twitter: "https://x.com/Kairavk",
-  resume: "/Kairav_Resume_2026.pdf",
+  resume: "/Kairav_Resume_2026_1.pdf",
   available: true,
 };
 
